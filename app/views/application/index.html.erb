@@ -1,0 +1,17 @@
+<h1>Facebook Page Email Extractor</h1>
+<%= form_tag({action: :upload}, multipart: true) do %>
+  <%= file_field_tag 'list' %>
+  <%= submit_tag("Upload List") %>
+<% end %>
+<ul>
+	<% if @list_upload %>
+	<% @list_upload.each do |row| %>
+	<% if row[0].end_with?('/') %>
+	<li><a href="<%= row[0] + 'about' %>"><%= row[1] %></a></li>
+	<% else %>
+		<li><a href="<%= row[0] + '/about' %>"><%= row[1] %></a></li>
+	<% end %>
+	<% end %>
+	<% end %>
+</ul>
+<%= link_to 'Scrape Emails', '/scrape' %>
