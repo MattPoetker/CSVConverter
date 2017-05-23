@@ -1,5 +1,6 @@
 <h1>Scrape Results</h1>
-
-<% @emails.each do |e| %>
-	<%= e %>
-	<% end %>
+<% @emails.each_with_index do |e, i| %>
+	<tr>
+		<td><%= i+1 %></td><td><%= ': ' + e.to_s %></td>
+	</tr><br>
+<% end %>
