@@ -12,6 +12,33 @@
 
 ActiveRecord::Schema.define(version: 20170520184016) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "color"
+    t.string   "slug"
+  end
+
+  create_table "hosts", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "website"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "listings", force: :cascade do |t|
+    t.string   "name"
+    t.string   "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "rows", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
