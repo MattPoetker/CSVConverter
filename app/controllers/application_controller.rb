@@ -19,7 +19,6 @@ class ApplicationController < ActionController::Base
 		coder = HTMLEntities.new(:html4)
 		@source = []
 		@emails = []
-		@row = []
 		list.each do |row|
 			begin
 				if row[0].end_with?('/')
@@ -36,8 +35,10 @@ class ApplicationController < ActionController::Base
 
 			rescue Errno::ENOENT
 				puts 'Page not found! Skipping...'
+				@source.append('test@example.com')
 			rescue OpenURI::HTTPError
 				puts '404 Error! Skipping...'
+				@source.append('test@example.com')
 			end
 		end
 		@source.each do |source|
